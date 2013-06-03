@@ -118,7 +118,6 @@
         method: method,
         data: userData,
         error: function ( xhr, status, error ) {
-          // TODO: Error case
           console.log( "Error! ", xhr.responseText );
           domHelper.clearForm();
         },
@@ -131,14 +130,12 @@
       // Redisplay page
     },
     editUser: function( username ) {
-      console.log( "IN EDITUSER" );
       // Collect user data
       ajaxHelper( {
         uri: loginUri + "/user/" + username,
         method: "get",
         error: function( xhr, status, error ) {
-        // TODO: Display error sanely in form
-          console.log("DISPLAY ERROR IN FORM");
+          console.log( "Error! ", xhr.responseText );
         },  
         success: function( data, status, xhr ) {
         // Populate form with data
@@ -216,8 +213,6 @@
           $( "#" + user.username + "del").on( 'click', function() {
             domHelper.deleteUser( user._id );
           }); // END-BIND
-
-
         });
       };
 
